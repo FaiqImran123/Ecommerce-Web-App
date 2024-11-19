@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <h1 class="title">To-Do App</h1>
+    <form method="POST" action="/" class="todo-form">
+        <div class="form-group">
+            <label for="todoName">To-Do Name:</label>
+            <input type="text" id="todoName" name="title" placeholder="Enter to-do name" required>
+        </div>
+        <div class="form-group">
+            <label for="todoDesc">Description:</label>
+            <textarea id="todoDesc" name="desc" placeholder="Enter description" required></textarea>
+        </div>
+        <button type="submit" class="btn">Add To-Do</button>
+    </form>
+</div>
+ 
+
+<div class="container">
+    {% if td|length==0 %}
+    no record
+{% else %}
+    <table class="todo-table">
+        <thead>
+            <tr>
+                <th>SNo</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in td %}
+            <tr>
+                <td>{{ loop.index}} </td>
+                <td>{{ i.title }}</td>
+                <td>{{ i.desc }}</td>
+                <td> {{i.dt }}</td>
+                <td><a type="button" href ="/delete/{{i.sno}}">delete</a></td>
+                <td><a type="button" href="/up/{{i.sno}}">update</a></td>
+              
+            </tr>
+        
+            {% endfor %}
+         
+        </tbody>
+    </table>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="container">
+    <h1 class="title">Update</h1>
+    <form< method="POST" action="/up/{{td.sno}}" class="todo-form">
+        <div class="form-group">
+            <label for="todoName">To-Do Name:</label>
+            <input type="text" id="todoName" name="title" placeholder="Enter to-do name" required value="{{td.title}}">
+        </div>
+        <div class="form-group">
+            <label for="todoDesc">Description:</label>
+            <textarea id="todoDesc" name="desc" placeholder="Enter description" required>{{td.desc}}</textarea>
+        </div>
+        <button type="submit" class="btn">Update</button>
+    </form>
+
+
+</div>
+
+{% endblock %}
